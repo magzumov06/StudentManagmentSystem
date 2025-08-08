@@ -8,4 +8,6 @@ public interface IStudentServices
     bool UpdateStudent(Student student);
     bool DeleteStudent(int id);
     List<Student> GetAllStudents();
+    List<Student> GetStudentsByName(string name);
+    void GetStudentCoursesWithJoin();
 }

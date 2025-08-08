@@ -49,6 +49,15 @@ while (true)
                 Console.WriteLine("Id " +r.Id+" | Nom: "+r.FirstName+" | Namsab: "+r.LastName+" | Adress: "+r.Address+" | soli tavvalud: "+r.BirthDate);
             }
             break;
+        case 4:
+            Console.Write("Id donishjuro vorid kuned: ");
+            int strudentId = int.Parse(Console.ReadLine());
+            var studentCourses = courseService.GetCourseByStudentId(strudentId);
+                foreach (var c in studentCourses)
+                {
+                    Console.WriteLine("Id: "+c.Id+"||Nom: "+c.Title+"||Description: "+c.Description);
+                }
+            break;
         case 5:
             Student newStudent2 = new Student();
             Console.Write("id donishjuro baroi update kardan vorid kuned: ");
@@ -64,8 +73,14 @@ while (true)
             service.UpdateStudent(newStudent2);
             break;
         case 6:
-            var id=int.Parse(Console.ReadLine());
-            courseService.UpdateCourse(id);
+            Console.WriteLine("ID kursro baroi update kardan vorid kuned: ");
+            int courseId = int.Parse(Console.ReadLine());
+            Course newCourse2 = new Course();
+            Console.Write("Nomi navi kursro vorid kuned: ");
+            newCourse2.Title = Console.ReadLine();
+            Console.Write("Description-i navi kursro vorid kuned: ");
+            newCourse2.Description = Console.ReadLine();
+            courseService.UpdateCourse(courseId, newCourse2);
             break;
         case 7:
             Console.Write("Id donishjuro baroi nest kardan vorid kuned: ");
@@ -76,6 +91,21 @@ while (true)
             Console.Write("Id kursro baroi nest kardan vorid kuned: ");
             var Id1= int.Parse(Console.ReadLine());
             courseService.DeleteCourse(Id1);
+            break;
+        case 9:
+            Console.Write("Nomi donishjuro baroi yoftan vorid kuned: ");
+            var name= Console.ReadLine();
+            var studentName = service.GetStudentsByName(name);
+            foreach (var s in studentName)
+            {
+                Console.WriteLine("ID: "+s.Id+"||Name: "+s.FirstName+"||nasab: "+s.LastName+"||tavallud: "+s.BirthDate+"||Adress: "+s.Address);
+            }
+            break;
+        case 10:
+            courseService.GetCourseCountByStudent();
+            break;
+        case 11:
+            service.GetStudentCoursesWithJoin();
             break;
         case 0:
             return;

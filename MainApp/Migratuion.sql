@@ -1,16 +1,16 @@
 ﻿CREATE DATABASE "StudentManagmentSystem_DB";
-create table students
-(
-    id        serial primary key,
-    Firstname varchar(50) not null,
-    lastname  varchar(50),
-    address   varchar(100),
-    birthdate  date
+
+CREATE TABLE students (
+      id SERIAL PRIMARY KEY,
+      firstname VARCHAR(100),
+      lastname VARCHAR(100),
+      birthday DATE,
+      address TEXT
 );
 
-create table courses
-(
-    id        serial primary key,
-    title varchar(50),
-    Description varchar(50)
+CREATE TABLE courses (
+     id SERIAL PRIMARY KEY,
+     title VARCHAR(100),
+     description TEXT,
+     student_id INTEGER REFERENCES students(id)
 );

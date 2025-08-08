@@ -5,8 +5,9 @@ namespace Infrastructure.Interfaces;
 public interface IcourseServices
 {
     bool AddCourse(Course course);
-    bool UpdateCourse(int Course_id);
+    bool UpdateCourse(int Course_id,Course course);
     bool DeleteCourse(int Course_id);
-    Course GetCourseByStudentId(int StudentId);
+    List<Course> GetCourseByStudentId(int StudentId);
+    void GetCourseCountByStudent();
 }
 
